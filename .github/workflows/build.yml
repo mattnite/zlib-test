@@ -59,6 +59,8 @@ jobs:
   local-windows:
     name: Link to locally built SDL
     runs-on: windows-latest
+    strategy:
+      matrix:
         link: [static, shared]
     steps:
       - name: Set git to use LF
