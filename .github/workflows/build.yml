@@ -57,11 +57,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: gyro build -Dlink=${{ matrix.link }} run
   local-windows:
-    name: Link to locally built SDL
+    name: Link to locally built SDL on Windows
     runs-on: windows-latest
     strategy:
       matrix:
-        link: [static, shared]
+        link: [static]
     steps:
       - name: Set git to use LF
         run: |
