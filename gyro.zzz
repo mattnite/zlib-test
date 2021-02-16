@@ -1,0 +1,7 @@
+build_deps:
+  ZLibBuilder:
+    src:
+      github:
+        user: mattnite
+        repo: ZLibBuilder
+        ref: main

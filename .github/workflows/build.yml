@@ -1,0 +1,56 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 23 * * *'
+
+jobs:
+  system:
+    name: Link to system SDL
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+      - uses: goto-bus-stop/setup-zig@v1
+        with:
+          version: master
+      - uses: mattnite/setup-gyro@v1.0.0
+      - uses: actions/checkout@v2
+
+      - if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: sudo apt install zlib
+
+      - if: ${{ matrix.os == 'macos-latest' }}
+        run: brew install zlib
+
+      - run: gyro build -Dlink=system run
+
+  local:
+    name: Link to locally built SDL
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        link: [static, shared]
+    steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+      - uses: goto-bus-stop/setup-zig@v1
+        with:
+          version: master
+      - uses: mattnite/setup-gyro@v1.0.0
+      - uses: actions/checkout@v2
+      - run: gyro build -Dlink=${{ matrix.link }} run
