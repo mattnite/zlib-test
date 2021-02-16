@@ -43,7 +43,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest]
         link: [static, shared]
     steps:
       - name: Set git to use LF
@@ -56,3 +56,18 @@ jobs:
       - uses: mattnite/setup-gyro@v1.0.0
       - uses: actions/checkout@v2
       - run: gyro build -Dlink=${{ matrix.link }} run
+  local-windows:
+    name: Link to locally built SDL
+    runs-on: windows-latest
+        link: [static, shared]
+    steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+      - uses: goto-bus-stop/setup-zig@v1
+        with:
+          version: master
+      - uses: mattnite/setup-gyro@v1.0.0
+      - uses: actions/checkout@v2
+      - run: gyro build -Dlink=${{ matrix.link }} -Dtarget=x86_64-windows-gnu run
