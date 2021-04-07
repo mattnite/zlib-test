@@ -1,7 +1,8 @@
-pkg default build-tools download 1.0.1
-pkg default gyro tar 0.0.1
-pkg default gyro zfetch 0.0.1
-pkg default gyro uri 0.0.0
-pkg default gyro hzzp 0.0.0
-pkg default gyro network 0.0.1
-pkg default gyro iguanaTLS 0.0.1
+github mattnite ZLibBuilder main src/main.zig b7f2a32499cae67ba19d719b7e8f15ed00207ee3
+pkg default mattnite download 0.1.0
+pkg default mattnite tar 0.0.1
+pkg default truemedian zfetch 0.0.2
+pkg default mattnite uri 0.0.0
+pkg default alexnask iguanaTLS 0.0.1
+pkg default mattnite network 0.0.1
+pkg default truemedian hzzp 0.0.2
