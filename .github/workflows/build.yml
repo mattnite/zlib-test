@@ -12,7 +12,7 @@ on:
 
 jobs:
   system:
-    name: Link to system SDL
+    name: Link to system zlib
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -25,7 +25,7 @@ jobs:
       - uses: goto-bus-stop/setup-zig@v1
         with:
           version: master
-      - uses: mattnite/setup-gyro@v1.0.0
+      - uses: mattnite/setup-gyro@v1
       - uses: actions/checkout@v2
 
       - if: ${{ matrix.os == 'ubuntu-latest' }}
@@ -39,7 +39,7 @@ jobs:
       - run: gyro build -Dlink=system run
 
   local:
-    name: Link to locally built SDL
+    name: Link to locally built zlib
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -53,11 +53,11 @@ jobs:
       - uses: goto-bus-stop/setup-zig@v1
         with:
           version: master
-      - uses: mattnite/setup-gyro@v1.0.0
+      - uses: mattnite/setup-gyro@v1
       - uses: actions/checkout@v2
       - run: gyro build -Dlink=${{ matrix.link }} run
   local-windows:
-    name: Link to locally built SDL on Windows
+    name: Link to locally built zlib on Windows
     runs-on: windows-latest
     strategy:
       matrix:
@@ -70,6 +70,6 @@ jobs:
       - uses: goto-bus-stop/setup-zig@v1
         with:
           version: master
-      - uses: mattnite/setup-gyro@v1.0.0
+      - uses: mattnite/setup-gyro@v1
       - uses: actions/checkout@v2
       - run: gyro build -Dlink=${{ matrix.link }} -Dtarget=x86_64-windows-gnu run
