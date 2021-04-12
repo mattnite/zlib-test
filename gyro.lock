@@ -1,8 +1,8 @@
 github mattnite ZLibBuilder main src/main.zig b7f2a32499cae67ba19d719b7e8f15ed00207ee3
-pkg default mattnite download 0.1.0
+pkg default mattnite download 0.1.1
 pkg default mattnite tar 0.0.1
-pkg default truemedian zfetch 0.0.2
+pkg default truemedian zfetch 0.0.3
 pkg default mattnite uri 0.0.0
 pkg default alexnask iguanaTLS 0.0.1
 pkg default mattnite network 0.0.1
-pkg default truemedian hzzp 0.0.2
+pkg default truemedian hzzp 0.0.3
