@@ -3,6 +3,6 @@ pkg default mattnite download 0.1.1
 pkg default mattnite tar 0.0.1
 pkg default truemedian zfetch 0.0.3
 pkg default mattnite uri 0.0.0
-pkg default alexnask iguanaTLS 0.0.1
+pkg default alexnask iguanaTLS 0.0.2
 pkg default mattnite network 0.0.1
 pkg default truemedian hzzp 0.0.3
